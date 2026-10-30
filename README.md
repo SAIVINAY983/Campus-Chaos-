@@ -17,6 +17,16 @@
   <img src="https://img.shields.io/badge/Netlify-Functions%20%26%20Blobs-00C7B7?style=flat-square&logo=netlify&logoColor=white" alt="Netlify" />
 </p>
 
+<p align="center">
+  <a href="https://campus-chaos-last-player-standing.netlify.app" target="_blank">
+    <img src="https://img.shields.io/badge/▶_PLAY_NOW-LIVE_DEMO-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Play Now - Live Demo" />
+  </a>
+</p>
+
+<p align="center">
+  🔗 <strong>Live Site:</strong> <a href="https://campus-chaos-last-player-standing.netlify.app" target="_blank">https://campus-chaos-last-player-standing.netlify.app</a>
+</p>
+
 ---
 
 ## 🎮 About Campus Chaos
@@ -91,7 +101,9 @@ Campus Chaos challenges players across three distinct mini-games:
 
 ---
 
-## 🌐 Deployment to Netlify
+## 🌐 Live Demo & Deployment
+
+- 🚀 **Play Now:** [https://campus-chaos-last-player-standing.netlify.app](https://campus-chaos-last-player-standing.netlify.app)
 
 This project is configured out-of-the-box for Netlify:
 
