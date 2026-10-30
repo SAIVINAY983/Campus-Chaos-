@@ -1,32 +1,109 @@
 # Campus Chaos — Last Player Standing
 
-A responsive, three-round multiplayer party game built with React, TypeScript, Vite, Netlify Functions, and Netlify Blobs.
+<p align="center">
+  <img src="assets/banner.jpg" alt="Campus Chaos Banner" width="100%" />
+</p>
 
-## Run locally
+<p align="center">
+  <strong>THINK FAST. PLAY SMART. SURVIVE.</strong><br>
+  <em>Three rounds. One winner. Zero second chances.</em>
+</p>
 
-1. Install Node.js 20 or newer.
-2. Run `npm install`.
-3. Run `npm run netlify:dev`.
-4. Open the local URL printed by Netlify Dev. Open it in another browser or device to join with the room code.
+<p align="center">
+  <img src="https://img.shields.io/badge/Players-2--8-blue?style=flat-square" alt="Players" />
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-5.0-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Netlify-Functions%20%26%20Blobs-00C7B7?style=flat-square&logo=netlify&logoColor=white" alt="Netlify" />
+</p>
 
-Netlify Dev provides an isolated local Blobs sandbox. The hosted site uses the same Netlify Function code with the site-wide `campus-chaos-rooms` Blobs store. To speed up local match testing, set `CAMPUS_CHAOS_TIMER_SCALE=0.5` before starting `npm run netlify:dev`; the override is ignored outside Netlify Dev. Production timers remain at their full lengths.
+---
 
-## Build and check
+## 🎮 About Campus Chaos
 
-- `npm run build` compiles the server function, type-checks the React app, and creates `dist/`.
-- `npm run test` checks the scoring and tiebreak rules.
-- `npm run netlify:dev` runs the actual function route and local Blobs sandbox.
-- `npm run test:integration` runs the two-session, three-round integration match against a running local Netlify Dev server. The script checks shared state, reconnection, duplicate rejection, private choices, quiz bounds, two-player Bluff scoring, partial Memory timeout scoring, winner selection, rematch reset, and deadlines during disconnects. If Netlify Dev selected a different port, set `GAME_URL` to that server’s `/.netlify/functions/game` URL before running the script.
+**Campus Chaos** is a fast-paced, real-time multiplayer party game designed for **2 to 8 players**. Rally your crew for an intense head-to-head test of speed, nerve, and memory. Every point counts, and every choice matters.
 
-## Deploy to Netlify
+Play seamlessly across mobile and desktop browsers with instant private room codes—no downloads or logins required.
 
-The ZIP contains the full source project, build scripts, function, configuration, tests, and lockfile. Extract it first. In a Netlify account, create or open a site and use the logged-in build-aware drag-and-drop deploy flow with the extracted project folder. Netlify uses `netlify.toml` to run `npm run build`, publish `dist/`, and deploy `netlify/functions/`. Do not deploy only `dist/`: that would omit the server function. Netlify CLI deployment with a build is another supported option.
+---
 
-After deployment, open the site URL, create a room, join it from a separate device, and play through a match. Netlify Blobs provisioning and hosted conditional-write behavior require the deployed site context; local sandbox tests do not verify a particular Netlify account or public deployment.
+## 🕹️ Game Rounds
 
-## Rules summary
+Campus Chaos challenges players across three distinct mini-games:
 
-- **Speed Quiz:** Five questions, 15 seconds each. Correct = 500 base + `floor(500 × remaining milliseconds ÷ 15,000)`, clamped to a 0–500 speed bonus. Wrong or unanswered = 0.
-- **Bluff or Bank:** BANK = +300. RISK = +800 only if fewer players chose RISK than BANK; a tie or RISK majority = −400. Unanswered players score zero and count toward neither choice.
-- **Memory Blitz:** Three sequences of 4, 6, and 8 items. Each item displays for one second; response windows are 15, 20, and 25 seconds. Each correct position = 200; a perfect sequence adds 500. Correctly entered positions can still score if time expires.
-- **Ties:** Final score, then Memory points, then Quiz points. Remaining ties share the win.
+| Round | Mini-Game | Description | Scoring |
+|---|---|---|---|
+| **01** | **⚡ Speed Quiz** | 5 rapid-fire questions (15 seconds each). Fast responses score maximum points. | Correct: **+500 base** + speed bonus up to **+500**. Wrong/Timeout: **0**. |
+| **02** | **✨ Bluff or Bank** | A high-stakes psychology test. Play safe or risk it all. | **BANK**: Safe **+300**.<br>**RISK**: **+800** if fewer players chose RISK than BANK; otherwise **−400** penalty! |
+| **03** | **🧠 Memory Blitz** | 3 escalating sequence tests (4, 6, and 8 items displayed for 1s each). | **+200** per correct position + **+500** bonus for a perfect sequence. |
+
+> **Tiebreaker Rules:** Total score determines the winner. If tied, Memory points break the tie, followed by Quiz points. Remaining ties share the victory!
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React 18, TypeScript, Vite, Responsive CSS
+- **Backend Serverless:** Netlify Functions (ESM / Node.js)
+- **Room State & Persistence:** Netlify Blobs (distributed room state engine)
+- **Testing:** Integration & unit test suites with custom match simulations
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v20 or newer recommended)
+- [Netlify CLI](https://docs.netlify.com/cli/get-started/) (`npm install -g netlify-cli` optional for dev environment)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/SAIVINAY983/Campus-Chaos-.git
+   cd Campus-Chaos-
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run locally with Netlify Dev:**
+   ```bash
+   npm run netlify:dev
+   ```
+   *Netlify Dev launches the local app and provides an isolated local Blobs sandbox.*
+
+4. Open the local URL in your browser, create a room, and share the code with friends or open in a second browser window to test multiplayer!
+
+> **Tip for testing:** Set `CAMPUS_CHAOS_TIMER_SCALE=0.5` before running `npm run netlify:dev` to run timer intervals at double speed during local testing.
+
+---
+
+## 📦 Scripts
+
+- `npm run netlify:dev` — Start the local development server with Netlify Functions and Blobs support.
+- `npm run build` — Compile server functions, run TypeScript type check, and bundle production assets to `dist/`.
+- `npm run test` — Run rule and scoring unit tests.
+- `npm run test:integration` — Run full two-player, three-round integration tests against the local server.
+
+---
+
+## 🌐 Deployment to Netlify
+
+This project is configured out-of-the-box for Netlify:
+
+1. Connect your repository to **Netlify** or use `netlify deploy`.
+2. Netlify reads [`netlify.toml`](./netlify.toml) automatically:
+   - **Build Command:** `npm run build`
+   - **Publish Directory:** `dist`
+   - **Functions Directory:** `netlify/functions`
+3. Ensure **Netlify Blobs** is enabled on your Netlify team/site for real-time state synchronization.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
